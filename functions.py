@@ -8,8 +8,8 @@ from scipy.stats import entropy
 from scipy import sparse
 import ripser
 
-# function for calculate persistence diagramas using LowerStair filtration.
-def calculatePersistenceDiagrams_LowerStair(t,x):
+# function for calculate persistence diagramas using LowerStar filtration.
+def calculatePersistenceDiagrams_LowerStar(t,x):
     N = x.shape[0]
     I = np.arange(N-1)
     J = np.arange(1, N)
@@ -30,7 +30,7 @@ def obtainDiagramDimension(Diagrams,dimension):
     return dgm
 
 # function for remove infinity values for persistence diagram.
-def limitDiagramLowerStair(Diagram,maximumFiltration):
+def limitDiagramLowerStar(Diagram,maximumFiltration):
     infinity_mask = np.isinf(Diagram)
     Diagram[infinity_mask] = maximumFiltration + 1
     return Diagram
@@ -48,7 +48,7 @@ def computePersistenceEntropy(persistentBarcode):
 
 # function for plot signal data and his persistent diagram of specific dimension.
 def plotSignal_PersistentDiagram(t,signal,dimension):
-    dgms = calculatePersistenceDiagrams_LowerStair(t,signal)    
+    dgms = calculatePersistenceDiagrams_LowerStar(t,signal)    
     dgm0 = obtainDiagramDimension(dgms,dimension)
     allgrid = np.unique(dgm0.flatten())
     allgrid = allgrid[allgrid < np.inf]
