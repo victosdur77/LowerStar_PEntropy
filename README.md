@@ -18,6 +18,6 @@ source entorno/bin/activate
 Finally, we install the necessary libraries:
 
 ```bash
-pip install numpy matplotlib gudhi scipy ripser
+pip install numpy matplotlib scipy ripser
 ```
 

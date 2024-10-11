@@ -1,9 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from gudhi import RipsComplex
-from gudhi import AlphaComplex
-from gudhi.representations import Entropy
-from gudhi.representations import DiagramSelector
 from scipy.stats import entropy
 from scipy import sparse
 import ripser
@@ -20,7 +16,7 @@ def calculatePersistenceDiagrams_LowerStar(t,x):
     V = np.concatenate((V, x))
     #Create the sparse distance matrix
     D = sparse.coo_matrix((V, (I, J)), shape=(N, N)).tocsr()
-    dgms = ripser.ripser(D, maxdim=1, distance_matrix=True)['dgms']
+    dgms = ripser.ripser(D, maxdim=3, distance_matrix=True)['dgms'] # doesn't matter the maxdim as there is only diagram for dimension 0 in the lowerstar filtration.
     return dgms
 
 # function for obtain persistence diagrama of specific dimension.
